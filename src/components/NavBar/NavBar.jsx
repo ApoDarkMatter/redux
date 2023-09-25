@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useDispatch } from "react-redux";
 import { searchData, setSelected } from "../../reducers/booksList";
 
-function NavBar() {
+function NavBar({links}) {
     const dispatch = useDispatch()
     
     const selectCategory = (e) => {
@@ -24,8 +25,11 @@ function NavBar() {
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav.Link href="#action1">Home</Nav.Link>
-          <Nav.Link href="#action2">About</Nav.Link>
+            <Nav className="me-auto">
+                        {links.map(link => (
+                            <Nav.Link key={nanoid()} href={link.href}>{link.name}</Nav.Link>
+                        ))}
+            </Nav>
 
             <Form.Select onChange={(e) => selectCategory(e.target.value)}>
               <option value="fantasy">Fantasy</option>

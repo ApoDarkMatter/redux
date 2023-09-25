@@ -33,6 +33,6 @@ export const booksList = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelected,searchData } = booksList.actions;
+export const { setSelected,searchData,isSelected } = booksList.actions;
 
 export default booksList.reducer;

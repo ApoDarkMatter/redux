@@ -1,14 +1,17 @@
 import React from "react";
-import { Books } from "./components/books";
+import { Books } from "./components/LatestRelease/LatestRelease";
 import NavBar from "./components/NavBar/NavBar";
-
+import MyFooter from './components/MyFooter/MyFooter'
+import { navLinks } from "./data/myNavBarLinks"
+import { footerLinks } from "./data/myFooterLinks"
 
 
 function App() {
   return (
       <>
-        <NavBar />
+        <NavBar links={navLinks}/>
         <Books />
+        <MyFooter links={footerLinks} />
       </>
   );
 }

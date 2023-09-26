@@ -11,8 +11,8 @@ const AddComment = ({asin,func}) => {
     const [newRate,setNewRate] = useState("")
 
     const addComment = async () => {
-        if(newComment === "" || newRate === "") {
-            alert('You must enter a comment')
+        if(newComment === "" || newRate === "" || newRate > 5 || newRate <= 0) {
+            alert('You must enter a comment - Rate only from 1 to 5')
         } else {
             try {
                 const response = await axios.post(url,

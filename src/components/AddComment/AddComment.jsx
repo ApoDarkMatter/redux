@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useState} from 'react'
-import { Container, Button, Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 
 const AddComment = ({asin,func}) => {
@@ -43,7 +43,7 @@ const AddComment = ({asin,func}) => {
 
     return (
         <>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', marginBottom: '20px' }}>
             <Card.Body>
                 <Card.Title>Add New Comment</Card.Title>
                 <Card.Text>

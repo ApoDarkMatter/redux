@@ -64,8 +64,9 @@ const CommentArea = ({asin}) => {
       if(availableComment) {
         return (
           <>
-            <CommentList comments={comment} asin={asin} func={getComments}/>
             <AddComment asin={asin} func={getComments}/>
+            <h2>Comments:</h2>
+            <CommentList comments={comment} asin={asin} func={getComments}/>
           </>
         )
       } else {

@@ -26,7 +26,7 @@ export function Books() {
   
   if(isLoading) {
     return (
-      <Container>
+      <Container style={{marginTop: '10px'}}>
         <Row className="h-100">
             <InfinitySpin 
               width='200'
@@ -37,7 +37,7 @@ export function Books() {
       )
   } else {
     return (
-      <Container>
+      <Container style={{marginTop: '10px'}}>
         <Row className="h-100">
           <Col lg={9}>
             <Row className="gap-2">
@@ -48,7 +48,6 @@ export function Books() {
             </Row>
           </Col>
           <Col lg={3}>
-            <h2>Comments:</h2>
             <SideBar/>
           </Col>
         </Row>

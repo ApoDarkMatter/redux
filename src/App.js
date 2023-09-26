@@ -1,17 +1,21 @@
 import React from "react";
-import { Books } from "./components/LatestRelease/LatestRelease";
-import NavBar from "./components/NavBar/NavBar";
-import MyFooter from './components/MyFooter/MyFooter'
-import { navLinks } from "./data/myNavBarLinks"
-import { footerLinks } from "./data/myFooterLinks"
-
+import HomePage from './pages/HomePage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import BookDetails from './pages/BookDetails'
+import Notfound from './pages/NotFound'
+import About from "./pages/About";
 
 function App() {
   return (
       <>
-        <NavBar links={navLinks}/>
-        <Books />
-        <MyFooter links={footerLinks} />
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="/bookdetails/:bookId" element={<BookDetails />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Notfound />} />
+          </Routes>
+        </BrowserRouter>
       </>
   );
 }

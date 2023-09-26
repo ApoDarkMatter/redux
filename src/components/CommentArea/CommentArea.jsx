@@ -3,11 +3,14 @@ import React, {useState} from 'react'
 import { useEffect } from 'react'
 import CommentList from '../CommentList/CommentList'
 import AddComment from '../AddComment/AddComment'
+import { useSelector } from 'react-redux'
 
 const CommentArea = ({asin}) => {
   const url = "https://striveschool-api.herokuapp.com/api/comments/"
   const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVhNGJlMTUxNWY0MTAwMTQ2OTdhMmYiLCJpYXQiOjE2OTU2NzUxNTQsImV4cCI6MTY5Njg4NDc1NH0.eUC1S_2PG1ieo1MStNTXtA_G7YADWVuarJSD0B3PRSU"
   
+  const currentAsin = useSelector((state) => state.books.currentAsin)
+
   const [comment,setComment] = useState([])
   const [availableComment,setAvailableComment] = useState(false)
 
@@ -32,7 +35,7 @@ const CommentArea = ({asin}) => {
 
   useEffect(() => {
     getComments()
-  },[])
+  },[currentAsin])
 
     if(availableComment) {
       return (
@@ -44,7 +47,7 @@ const CommentArea = ({asin}) => {
     } else {
       return (
         <>
-          <p>Nessun Commnento</p>
+          <p>No Comments</p>
           <AddComment asin={asin} func={getComments}/>
         </>
       )

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 import {AiFillDelete} from 'react-icons/ai'
 
 const SingleComment = ({comment,asin,func}) => {
@@ -25,7 +25,17 @@ const SingleComment = ({comment,asin,func}) => {
     }
 
   return (
-    <p>{comment.comment} - {comment.rate} - <Button variant="danger" type="button" onClick={deleteComment}><AiFillDelete/></Button></p>
+    <>
+        <Card style={{ width: '18rem',marginBottom: '10px' }}>
+            <Card.Body>
+                <Card.Title>Rate: {comment.rate}</Card.Title>
+                <Card.Text>
+                    {comment.comment}
+                </Card.Text>
+            </Card.Body>
+            <Button variant="danger" type="button" onClick={deleteComment}><AiFillDelete/></Button>
+        </Card>
+    </>
   )
 }
 

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchData } from "../../reducers/booksList";
 import { nanoid } from "@reduxjs/toolkit";
 import BookCard from "../BookCard/BookCard";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import SideBar from "../SideBar/SideBar";
 
 
 export function Books() {
@@ -12,18 +13,27 @@ export function Books() {
 
   const dispatch = useDispatch()
   
-
   useEffect(() => {
     dispatch(searchData(""))
   }, [select])
   
   return (
     <Container>
-      <Row className="gap-3">
-        {searchRes.map(book => (
-          <BookCard key={nanoid()} bookDetails={book} />))
-        }
+      <Row className="h-100">
+        <Col lg={9}>
+          <Row className="gap-2">
+            {searchRes.map(book => (
+                <BookCard key={nanoid()} bookDetails={book}/>
+            ))
+            }
+          </Row>
+        </Col>
+        <Col lg={3}>
+          <h2>Comments:</h2>
+          <SideBar/>
+        </Col>
       </Row>
+      
     </Container>
   );
 }

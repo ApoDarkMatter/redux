@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useState} from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 
 
 const AddComment = ({asin,func}) => {
@@ -42,19 +42,26 @@ const AddComment = ({asin,func}) => {
     }
 
     return (
-        <Container>
-            <input type="text"
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Add Comment"
-            ></input>
-            <input type="number"
-                value={newRate}
-                onChange={(rate) => setNewRate(rate.target.value)}
-                placeholder="Add Rate"
-            ></input>
+        <>
+            <Card style={{ width: '18rem' }}>
+            <Card.Body>
+                <Card.Title>Add New Comment</Card.Title>
+                <Card.Text>
+                    <input type="text"
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        placeholder="Add Comment"
+                    ></input>
+                    <input type="number"
+                        value={newRate}
+                        onChange={(rate) => setNewRate(rate.target.value)}
+                        placeholder="Add Rate"
+                    ></input>
+                </Card.Text>
+            </Card.Body>
             <Button type="button" onClick={addComment}>Add Comment</Button>
-        </Container>
+            </Card>
+        </>
     )
 }
 

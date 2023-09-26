@@ -1,18 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './BookCard.css'
-import CommentModal from '../CommentModal/CommentModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentAsin } from '../../reducers/booksList';
 
 function BookCard({bookDetails}) {
+  
+  const dispatch = useDispatch()
 
   const [selected,setSelected] = useState(false)
-  
+
   const select = () => {
     setSelected(!selected)
+    if(selected) {
+      dispatch(setCurrentAsin(""))
+    } else {
+      dispatch(setCurrentAsin(bookDetails.asin))
+    }
   }
 
-  
   if(selected) {
     return (
       <Card style={{ width: '18rem' }}>
@@ -23,8 +30,7 @@ function BookCard({bookDetails}) {
             {bookDetails.asin}
           </Card.Text>
         </Card.Body>
-        <Button variant="primary">Book Details</Button>
-        <CommentModal details={bookDetails}/>
+        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`}>Book Details</Button>
       </Card>
     )
   } else {
@@ -37,8 +43,7 @@ function BookCard({bookDetails}) {
             {bookDetails.asin}
           </Card.Text>
         </Card.Body>
-        <Button variant="primary">Book Details</Button>
-        <CommentModal details={bookDetails}/>
+        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`}>Book Details</Button>
       </Card>
     )
   }

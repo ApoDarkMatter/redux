@@ -15,7 +15,10 @@ const initialState = {
   },
   selected: "fantasy",
   searchResult: [],
+  searchResultById: {},
   isLoading: false,
+  currentAsin: "",
+  commentState: "",
 };
 
 export const booksList = createSlice({
@@ -29,10 +32,17 @@ export const booksList = createSlice({
     searchData: (state,action) => {
       state.searchResult = state.cat[state.selected].filter((book) => book.title.toLowerCase().includes(action.payload.toLowerCase()))
     },
+    searchDataByAsin: (state,action) => {
+      state.searchResultById = state.cat[state.selected].filter((book) => book.asin.includes(action.payload))
+      state.searchResultById = state.searchResultById[0]
+    },
+    setCurrentAsin: (state,action) => {
+      state.currentAsin = action.payload
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelected,searchData,isSelected } = booksList.actions;
+export const { setSelected,searchData,isSelected, setCurrentAsin,searchDataByAsin } = booksList.actions;
 
 export default booksList.reducer;

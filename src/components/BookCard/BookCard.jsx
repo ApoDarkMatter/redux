@@ -22,7 +22,7 @@ function BookCard({bookDetails}) {
 
   if(selected) {
     return (
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem'}}>
         <Card.Img variant="top" src={bookDetails.img} onClick={select} className={selected ? 'addBorder' : ''}/>
         <Card.Body>
           <Card.Title>{bookDetails.title}</Card.Title>
@@ -30,7 +30,7 @@ function BookCard({bookDetails}) {
             {bookDetails.asin}
           </Card.Text>
         </Card.Body>
-        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`}>Book Details</Button>
+        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`} style={{ marginBottom: '10px' }}>Book Details</Button>
       </Card>
     )
   } else {
@@ -43,7 +43,7 @@ function BookCard({bookDetails}) {
             {bookDetails.asin}
           </Card.Text>
         </Card.Body>
-        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`}>Book Details</Button>
+        <Button variant="primary" href={`./bookdetails/${bookDetails.asin}`} style={{ marginBottom: '10px' }}>Book Details</Button>
       </Card>
     )
   }

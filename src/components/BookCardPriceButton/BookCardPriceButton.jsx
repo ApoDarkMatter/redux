@@ -13,7 +13,7 @@ function BookCardPriceButton({bookDetails}) {
           {bookDetails.asin}
         </Card.Text>
       </Card.Body>
-      <Button variant="primary">Price {bookDetails.price}</Button>
+      <Button variant="primary" style={{ marginBottom: '10px' }}>Price {bookDetails.price}</Button>
     </Card>
   )
 }

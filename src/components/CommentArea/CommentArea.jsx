@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import CommentList from '../CommentList/CommentList'
 import AddComment from '../AddComment/AddComment'
 import { useSelector } from 'react-redux'
+import { Comment } from 'react-loader-spinner'
+import { Row } from 'react-bootstrap'
 
 const CommentArea = ({asin}) => {
   const url = "https://striveschool-api.herokuapp.com/api/comments/"
@@ -13,6 +15,7 @@ const CommentArea = ({asin}) => {
 
   const [comment,setComment] = useState([])
   const [availableComment,setAvailableComment] = useState(false)
+  const [loading,setLoading] = useState(false)
 
   const getComments = async () => {
     try {
@@ -34,24 +37,46 @@ const CommentArea = ({asin}) => {
   }
 
   useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000);
     getComments()
   },[currentAsin])
 
-    if(availableComment) {
+
+  if (loading) {
       return (
-        <>
-          <CommentList comments={comment} asin={asin} func={getComments}/>
-          <AddComment asin={asin} func={getComments}/>
-        </>
+        <Row>
+          <Comment
+            visible={true}
+            height="50"
+            width="50"
+            ariaLabel="comment-loading"
+            wrapperStyle={{}}
+            wrapperClass="comment-wrapper"
+            color="#fff"
+            backgroundColor="#000"
+          />
+        </Row>
       )
     } else {
-      return (
-        <>
-          <p>No Comments</p>
-          <AddComment asin={asin} func={getComments}/>
-        </>
-      )
-    }
+      if(availableComment) {
+        return (
+          <>
+            <CommentList comments={comment} asin={asin} func={getComments}/>
+            <AddComment asin={asin} func={getComments}/>
+          </>
+        )
+      } else {
+        return (
+          <>
+            <p>No Comments</p>
+            <AddComment asin={asin} func={getComments}/>
+          </>
+        )
+      }
+    } 
   }
 
 export default CommentArea

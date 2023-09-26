@@ -22,8 +22,8 @@ function BookCard({bookDetails}) {
 
   if(selected) {
     return (
-      <Card style={{ width: '18rem'}}>
-        <Card.Img variant="top" src={bookDetails.img} onClick={select} className={selected ? 'addBorder' : ''}/>
+      <Card style={{ width: '18rem'}} className={selected ? 'addBorder' : ''}>
+        <Card.Img variant="top" src={bookDetails.img} onClick={select} />
         <Card.Body>
           <Card.Title>{bookDetails.title}</Card.Title>
           <Card.Text>
@@ -35,8 +35,8 @@ function BookCard({bookDetails}) {
     )
   } else {
     return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={bookDetails.img} onClick={select} className={selected ? 'addBorder' : ''}/>
+      <Card style={{ width: '18rem' }} className={selected ? 'addBorder' : ''}>
+        <Card.Img variant="top" src={bookDetails.img} onClick={select}/>
         <Card.Body>
           <Card.Title>{bookDetails.title}</Card.Title>
           <Card.Text>

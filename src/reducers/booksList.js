@@ -39,10 +39,12 @@ export const booksList = createSlice({
     setCurrentAsin: (state,action) => {
       state.currentAsin = action.payload
     },
-  },
-});
+    setIsLoading: (state,action) => {
+      state.isLoading = action.payload
+    },
+}});
 
 // Action creators are generated for each case reducer function
-export const { setSelected,searchData,isSelected, setCurrentAsin,searchDataByAsin } = booksList.actions;
+export const { setSelected,searchData,isSelected, setCurrentAsin,searchDataByAsin,setIsLoading } = booksList.actions;
 
 export default booksList.reducer;

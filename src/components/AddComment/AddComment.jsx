@@ -48,14 +48,20 @@ const AddComment = ({asin,func}) => {
                 <Card.Title>Add New Comment</Card.Title>
                 <Card.Text>
                     <input type="text"
+                        style={{width: "100%"}}
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
                         placeholder="Add Comment"
                     ></input>
+                </Card.Text>
+                <Card.Text>
                     <input type="number"
+                        style={{width: "100%"}}
                         value={newRate}
                         onChange={(rate) => setNewRate(rate.target.value)}
                         placeholder="Add Rate"
+                        min="1" 
+                        max="5"
                     ></input>
                 </Card.Text>
             </Card.Body>

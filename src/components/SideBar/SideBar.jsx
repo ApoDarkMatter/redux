@@ -12,7 +12,7 @@ function SideBar() {
     
     if (currentAsin === "") {
         return (
-            <p>No comments, select one book</p>
+            <h5>No comments, select one book</h5>
         )
     } else {
         return (

@@ -72,7 +72,7 @@ const CommentArea = ({asin}) => {
       } else {
         return (
           <>
-            <p>No Comments</p>
+            <h2>No Comments</h2>
             <AddComment asin={asin} func={getComments}/>
           </>
         )

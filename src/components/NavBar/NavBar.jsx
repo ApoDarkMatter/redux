@@ -21,7 +21,12 @@ function NavBar({links}) {
     }
 
     useEffect(() => {
-      dispatch(searchData(searchInputValue))
+      const timer = setTimeout(() => {
+        dispatch(searchData(searchInputValue))
+      }, 500)
+
+      return () => clearTimeout(timer)
+      
     }, [searchInputValue])
     
 

@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -9,13 +9,21 @@ import { searchData, setCurrentAsin, setSelected } from "../../reducers/booksLis
 
 function NavBar({links}) {
 
+    const [searchInputValue, setSearchInputValue] = useState("")
+
     const dispatch = useDispatch()
     
     const selectCategory = (e) => {
         dispatch(searchData(""))
         dispatch(setSelected(e))
         dispatch(setCurrentAsin(""))
+        setSearchInputValue("")
     }
+
+    useEffect(() => {
+      dispatch(searchData(searchInputValue))
+    }, [searchInputValue])
+    
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -44,11 +52,12 @@ function NavBar({links}) {
         </Nav>
         <Form className="d-flex">
           <Form.Control
+            value={searchInputValue}
             type="text"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
-            onChange= {(e) => dispatch(searchData(e.target.value))}
+            onChange= {(e) => setSearchInputValue(e.target.value)}
           />
         </Form>
       </Navbar.Collapse>

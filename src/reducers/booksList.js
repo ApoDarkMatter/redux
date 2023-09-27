@@ -31,6 +31,7 @@ export const booksList = createSlice({
     },
     searchData: (state,action) => {
       state.searchResult = state.cat[state.selected].filter((book) => book.title.toLowerCase().includes(action.payload.toLowerCase()))
+      state.currentAsin = ""
     },
     searchDataByAsin: (state,action) => {
       state.searchResultById = state.cat[state.selected].filter((book) => book.asin.includes(action.payload))

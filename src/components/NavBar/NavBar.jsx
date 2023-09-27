@@ -5,13 +5,16 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useDispatch } from "react-redux";
-import { searchData, setSelected } from "../../reducers/booksList";
+import { searchData, setCurrentAsin, setSelected } from "../../reducers/booksList";
 
 function NavBar({links}) {
+
     const dispatch = useDispatch()
     
     const selectCategory = (e) => {
-      dispatch(setSelected(e))
+        dispatch(searchData(""))
+        dispatch(setSelected(e))
+        dispatch(setCurrentAsin(""))
     }
 
   return (

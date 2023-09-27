@@ -12,8 +12,10 @@ export function Books() {
   const searchRes = useSelector((state) => state.books.searchResult)
   const select = useSelector((state) => state.books.selected)
   const isLoading = useSelector((state) => state.books.isLoading)
+  const currentAsin = useSelector((state) => state.books.currentAsin)
 
   const dispatch = useDispatch()
+  
   
   useEffect(() => {
     dispatch(searchData(""))
@@ -42,7 +44,7 @@ export function Books() {
           <Col lg={9}>
             <Row className="gap-2">
               {searchRes.map(book => (
-                  <BookCard key={nanoid()} bookDetails={book}/>
+                  <BookCard key={nanoid()} bookDetails={book} sel={currentAsin===book.asin?true:false}/>
               ))
               }
             </Row>

@@ -5,7 +5,7 @@ import './BookCard.css'
 import { useDispatch } from 'react-redux';
 import { setCurrentAsin } from '../../reducers/booksList';
 
-function BookCard({bookDetails}) {
+function BookCard({bookDetails,sel}) {
   
   const dispatch = useDispatch()
 
@@ -22,7 +22,7 @@ function BookCard({bookDetails}) {
 
   if(selected) {
     return (
-      <Card style={{ width: '18rem'}} className={selected ? 'addBorder' : ''}>
+      <Card style={{ width: '18rem'}} className={sel ? 'addBorder' : ''}>
         <Card.Img variant="top" src={bookDetails.img} onClick={select} />
         <Card.Body>
           <Card.Title>{bookDetails.title}</Card.Title>
@@ -35,7 +35,7 @@ function BookCard({bookDetails}) {
     )
   } else {
     return (
-      <Card style={{ width: '18rem' }} className={selected ? 'addBorder' : ''}>
+      <Card style={{ width: '18rem' }} className={sel ? 'addBorder' : ''}>
         <Card.Img variant="top" src={bookDetails.img} onClick={select}/>
         <Card.Body>
           <Card.Title>{bookDetails.title}</Card.Title>
